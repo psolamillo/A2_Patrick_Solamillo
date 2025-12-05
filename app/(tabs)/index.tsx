@@ -4,7 +4,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 export default function MainScreen() {
     const [baseCurrency, setBaseCurrency] = useState('CAD');
     const [targetCurrency, setTargetCurrency] = useState('USD');
-    const [amount, setAmount] = useState('');
+    const [amount, setAmount] = useState('1');
     const [convertedAmount, setConvertedAmount] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -33,6 +33,17 @@ export default function MainScreen() {
           placeholder="USD"
           maxLength={3}
           autoCapitalize="characters"
+        />
+      </View>
+
+      <View style={styles.inputGroup}>
+        <Text style={styles.label}>Amount</Text>
+        <TextInput
+          style={styles.input}
+          value={amount}
+          onChangeText={setAmount}
+          placeholder="1"
+          keyboardType="decimal-pad"
         />
       </View>
 
