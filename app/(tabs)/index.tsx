@@ -51,6 +51,8 @@ export default function MainScreen() {
         <Text style={styles.buttonText}>Convert</Text>
       </TouchableOpacity>
 
+      {error ? <Text style={styles.error}>{error}</Text> : null}
+
     </View>
   );
 }
@@ -95,5 +97,10 @@ buttonText: {
   textAlign: 'center',
   fontSize: 16,
   fontWeight: '600',
+},
+error: {
+  color: 'red',
+  marginTop: 15,
+  textAlign: 'center',
 },
 });
