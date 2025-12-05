@@ -7,7 +7,8 @@ export default function MainScreen() {
     const [baseCurrency, setBaseCurrency] = useState('CAD');
     const [targetCurrency, setTargetCurrency] = useState('USD');
     const [amount, setAmount] = useState('1');
-    const [convertedAmount, setConvertedAmount] = useState('');
+    const [result, setResult] = useState('');
+    const [rate, setRate] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
