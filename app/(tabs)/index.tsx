@@ -3,6 +3,11 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function MainScreen() {
     const [baseCurrency, setBaseCurrency] = useState('CAD');
+    const [targetCurrency, setTargetCurrency] = useState('USD');
+    const [amount, setAmount] = useState('');
+    const [convertedAmount, setConvertedAmount] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Currency Converter</Text>
@@ -14,6 +19,18 @@ export default function MainScreen() {
           value={baseCurrency}
           onChangeText={(text) => setBaseCurrency(text.toUpperCase())}
           placeholder="CAD"
+          maxLength={3}
+          autoCapitalize="characters"
+        />
+      </View>
+
+      <View style={styles.inputGroup}>
+        <Text style={styles.label}>To Currency</Text>
+        <TextInput
+          style={styles.input}
+          value={targetCurrency}
+          onChangeText={(text) => setTargetCurrency(text.toUpperCase())}
+          placeholder="USD"
           maxLength={3}
           autoCapitalize="characters"
         />
