@@ -3,28 +3,19 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function AboutScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>About Currency Converter</Text>
+      <Text style={styles.title}>About</Text>
       
-      <View style={styles.content}>
+      <View style={styles.card}>
+        <Text style={styles.name}>Patrick Solamillo</Text>
+        <Text style={styles.studentId}>Student ID: 101464667</Text>
+      </View>
+
+      <View style={styles.descriptionBox}>
+        <Text style={styles.descriptionTitle}>What this app does</Text>
         <Text style={styles.description}>
-          A currency converter app that provides real-time exchange rates.
-        </Text>
-        
-        <Text style={styles.sectionTitle}>Features:</Text>
-        <Text style={styles.feature}>• Real-time exchange rates</Text>
-        <Text style={styles.feature}>• Support for 150+ currencies</Text>
-        <Text style={styles.feature}>• Clean and intuitive interface</Text>
-        <Text style={styles.feature}>• Input validation</Text>
-        
-        <View style={styles.studentInfo}>
-          <Text style={styles.sectionTitle}>Information:</Text>
-          <Text style={styles.info}>Course: COMP3074 - Mobile Development</Text>
-          <Text style={styles.info}>Patrick Solamillo</Text>
-          <Text style={styles.info}>ID: 101464667</Text>
-        </View>
-        
-        <Text style={styles.footer}>
-          Powered by Free Currency API
+          This app lets users convert between different currencies.
+          Users can enter the base currency, target currency, and amount to convert.
+          The app fetches real-time exchange rates using the Free Currency API.
         </Text>
       </View>
     </View>
@@ -44,44 +35,42 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333',
   },
-  content: {
-    flex: 1,
+  card: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 8,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#ddd',
+  },
+  name: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    textAlign: 'center',
+  },
+  studentId: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    marginTop: 8,
+  },
+  descriptionBox: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+  },
+  descriptionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 10,
   },
   description: {
-    fontSize: 16,
-    lineHeight: 24,
-    marginBottom: 30,
-    color: '#666',
-    textAlign: 'center',
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 15,
-    color: '#333',
-  },
-  feature: {
-    fontSize: 16,
-    marginBottom: 8,
-    color: '#666',
-    marginLeft: 10,
-  },
-  studentInfo: {
-    marginTop: 40,
-    paddingTop: 20,
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-  },
-  info: {
-    fontSize: 16,
-    marginBottom: 8,
-    color: '#666',
-  },
-  footer: {
     fontSize: 14,
-    textAlign: 'center',
-    marginTop: 40,
-    color: '#999',
-    fontStyle: 'italic',
+    color: '#666',
+    lineHeight: 22,
   },
 });
