@@ -116,6 +116,15 @@ export default function MainScreen() {
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
+      {result ? (
+        <View style={styles.resultBox}>
+          <Text style={styles.resultText}>
+            {amount} {baseCurrency} = {result} {targetCurrency}
+          </Text>
+          <Text style={styles.rateText}>Exchange Rate: {rate}</Text>
+        </View>
+      ) : null}
+
     </View>
   );
 }
@@ -165,5 +174,23 @@ error: {
   color: 'red',
   marginTop: 15,
   textAlign: 'center',
+},
+resultBox: {
+  marginTop: 25,
+  padding: 20,
+  backgroundColor: '#e8f5e9',
+  borderRadius: 8,
+},
+resultText: {
+  fontSize: 20,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  color: '#2e7d32',
+},
+rateText: {
+  fontSize: 14,
+  textAlign: 'center',
+  color: '#666',
+  marginTop: 8,
 },
 });
