@@ -8,6 +8,28 @@ export default function MainScreen() {
     const [convertedAmount, setConvertedAmount] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+
+  const validateInputs = () => {
+    const currencyRegex = /^[A-Z]{3}$/;
+    
+    if (!currencyRegex.test(baseCurrency.toUpperCase())) {
+      setError('Base currency must be 3 uppercase letters');
+      return false;
+    }
+    if (!currencyRegex.test(targetCurrency.toUpperCase())) {
+      setError('Target currency must be 3 uppercase letters');
+      return false;
+    }
+    
+    const amountNum = parseFloat(amount);
+    if (isNaN(amountNum) || amountNum <= 0) {
+      setError('Amount must be a positive number');
+      return false;
+    }
+    
+    return true;
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Currency Converter</Text>
