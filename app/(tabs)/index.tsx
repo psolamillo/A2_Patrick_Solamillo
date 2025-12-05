@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
+const API_KEY = 'fca_live_QWZG0KZZ6vrnHAkJFrn9gVCUQR45NzR9Cpa3QE9Z';
+
 export default function MainScreen() {
     const [baseCurrency, setBaseCurrency] = useState('CAD');
     const [targetCurrency, setTargetCurrency] = useState('USD');
