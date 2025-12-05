@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "COMP3074Assignment2",
-    "slug": "COMP3074Assignment2",
+    "name": "A2_Patrick_Solamillo",
+    "slug": "A2-currency-converter",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
