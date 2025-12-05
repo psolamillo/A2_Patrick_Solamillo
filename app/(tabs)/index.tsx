@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function MainScreen() {
     const [baseCurrency, setBaseCurrency] = useState('CAD');
@@ -47,6 +47,10 @@ export default function MainScreen() {
         />
       </View>
 
+      <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <Text style={styles.buttonText}>Convert</Text>
+      </TouchableOpacity>
+
     </View>
   );
 }
@@ -79,5 +83,17 @@ input: {
   borderRadius: 8,
   padding: 12,
   fontSize: 16,
-}
+},
+button: {
+  backgroundColor: '#007AFF',
+  padding: 15,
+  borderRadius: 8,
+  marginTop: 10,
+},
+buttonText: {
+  color: '#fff',
+  textAlign: 'center',
+  fontSize: 16,
+  fontWeight: '600',
+},
 });
