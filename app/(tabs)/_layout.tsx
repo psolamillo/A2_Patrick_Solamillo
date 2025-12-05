@@ -9,6 +9,12 @@ export default function TabLayout() {
           title: 'Converter',
         }}
       />
+      <Tabs.Screen
+        name="about"
+        options={{
+          title: 'About',
+        }}
+      />
     </Tabs>
   );
 }
