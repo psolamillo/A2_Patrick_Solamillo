@@ -7,12 +7,14 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Converter',
+          tabBarIcon: () => null,
         }}
       />
       <Tabs.Screen
         name="about"
         options={{
           title: 'About',
+          tabBarIcon: () => null,
         }}
       />
     </Tabs>
