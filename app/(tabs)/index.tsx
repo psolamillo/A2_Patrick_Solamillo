@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 const API_KEY = 'fca_live_QWZG0KZZ6vrnHAkJFrn9gVCUQR45NzR9Cpa3QE9Z';
 
@@ -40,6 +40,8 @@ export default function MainScreen() {
 
     if (!validateInputs()) return;
 
+    setLoading(true);
+
     try {
       const base = baseCurrency.toUpperCase();
       const target = targetCurrency.toUpperCase();
@@ -68,6 +70,8 @@ export default function MainScreen() {
       } else {
         setError('Network error. Check your connection.');
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -110,8 +114,16 @@ export default function MainScreen() {
         />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={convertCurrency}>
-        <Text style={styles.buttonText}>Convert</Text>
+      <TouchableOpacity
+        style={[styles.button, loading && styles.buttonDisabled]}
+        onPress={convertCurrency}
+        disabled={loading}
+      >
+        {loading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <Text style={styles.buttonText}>Convert</Text>
+        )}
       </TouchableOpacity>
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
@@ -169,6 +181,9 @@ buttonText: {
   textAlign: 'center',
   fontSize: 16,
   fontWeight: '600',
+},
+buttonDisabled: {
+  backgroundColor: '#999',
 },
 error: {
   color: 'red',
