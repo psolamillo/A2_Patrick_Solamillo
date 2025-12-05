@@ -33,6 +33,44 @@ export default function MainScreen() {
     return true;
   };
 
+  const convertCurrency = async () => {
+    setError('');
+    setResult('');
+    setRate('');
+
+    if (!validateInputs()) return;
+
+    try {
+      const base = baseCurrency.toUpperCase();
+      const target = targetCurrency.toUpperCase();
+      
+      const url = `https://api.freecurrencyapi.com/v1/latest?apikey=${API_KEY}&base_currency=${base}&currencies=${target}`;
+      
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.errors || !response.ok) {
+        throw new Error(data.message || 'Failed to get exchange rate');
+      }
+
+      if (!data.data || !data.data[target]) {
+        throw new Error('Currency not found');
+      }
+
+      const exchangeRate = data.data[target];
+      const converted = parseFloat(amount) * exchangeRate;
+      
+      setRate(exchangeRate.toFixed(4));
+      setResult(converted.toFixed(2));
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Network error. Check your connection.');
+      }
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Currency Converter</Text>
@@ -72,7 +110,7 @@ export default function MainScreen() {
         />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => {}}>
+      <TouchableOpacity style={styles.button} onPress={convertCurrency}>
         <Text style={styles.buttonText}>Convert</Text>
       </TouchableOpacity>
 
